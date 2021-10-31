@@ -15,7 +15,7 @@ menuBtn.addEventListener('click', () => {
 let courslist = [
     {
         id: 1,
-        course: 'Javascript',
+        course: 'Design',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '1',
@@ -23,7 +23,7 @@ let courslist = [
     },
     {
         id: 2,
-        course: 'Business Analysis',
+        course: 'Design',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '2',
@@ -87,8 +87,7 @@ let courslist = [
 
 
 
-const btnadd = document.querySelector('#add');
-btnadd.addEventListener('click', addCourses);
+
 
 function coursesAll() {
     const nazovigalerry = document.querySelector('.gallery');
@@ -138,6 +137,8 @@ function coursesAll() {
     newcards.appendChild.add(pricecourse)
 
 }
+const btnadd = document.querySelector('.btnAdd');
+btnadd.addEventListener('click', addCourses);
 
 function addCourses() {
     courslist.push({
