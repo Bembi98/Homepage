@@ -373,6 +373,10 @@ padding:24px;
     padding: 4px 24px;
 
 }
+.btnAdd{
+    position:absolute;
+    right:170px;
+}
 .imgbtn{
     position:relative;
 }
