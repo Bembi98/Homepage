@@ -2,7 +2,7 @@ const menuBtn = document.querySelector('.menu-btn');
 const nav = document.querySelector('.menu-list');
 let menuOpen = false;
 menuBtn.addEventListener('click', () => {
-    if(!menuOpen) {
+    if (!menuOpen) {
         menuBtn.classList.add('open');
         menuOpen = true;
         nav.classList.add('menu_active');
@@ -12,10 +12,12 @@ menuBtn.addEventListener('click', () => {
         nav.classList.remove('menu_active');
     }
 });
+let id=9;
 let courslist = [
     {
         id: 1,
-        course: 'Design',
+        course: 'UI/UX Design',
+        name:'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '1',
@@ -23,7 +25,8 @@ let courslist = [
     },
     {
         id: 2,
-        course: 'Design',
+        course: 'Web Developer',
+        name:'How to become an Expert Web Developer',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '2',
@@ -31,7 +34,8 @@ let courslist = [
     },
     {
         id: 3,
-        course: 'Design',
+        course: 'UX Research',
+        name:'User Experience Design \n' + 'Essentials',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '3',
@@ -39,7 +43,8 @@ let courslist = [
     },
     {
         id: 4,
-        course: 'Design',
+        course: '3D Design',
+        name:'Creating 3D Modelling in \n' + 'Blender ',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '4',
@@ -48,7 +53,8 @@ let courslist = [
     },
     {
         id: 5,
-        course: 'Design',
+        course: 'UI/UX Design',
+        name:'How to become an Expert Web Developer',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '5',
@@ -57,25 +63,28 @@ let courslist = [
     },
     {
         id: 6,
-        course: 'Design',
+        course: 'Public Speaking',
+        name:'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
-        stars: '6',
+        stars: '2',
         price: '$380',
 
     },
     {
         id: 7,
-        course: 'Design',
+        course: '3D Design',
+        name:'Creating 3D Modelling in \n' + 'Blender ',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
-        stars: '7',
+        stars: '4',
         price: '$385',
 
     },
     {
-        id: 8,
-        course: 'Design',
+        id: 1,
+        course: 'UI/UX Design',
+        name:'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '8',
@@ -86,68 +95,74 @@ let courslist = [
 ];
 
 
-
-
-
-function coursesAll() {
+function coursesAll(courslist) {
     const nazovigalerry = document.querySelector('.gallery');
-    const newcards = document.createElement('div');
-    newcards.classList.add('cards');
-    nazovigalerry.appendChild(newcards);
+nazovigalerry.textContent='';
+    courslist.forEach(function (item) {
+        console.log(123)
+            const newcards = document.createElement('div');
+            newcards.classList.add('cards');
+            nazovigalerry.appendChild(newcards);
 
-    const imgdiv = document.createElement('div');
-    imgdiv.classList.add('imgbtn')
-    newcards.appendChild(imgdiv)
+            const imgdiv = document.createElement('div');
+            imgdiv.classList.add('imgbtn')
+            newcards.appendChild(imgdiv)
 
-    const imgcards = document.createElement('img')
-    imgcards.src='./img/pon3.jpg'
-    imgdiv.appendChild(imgcards)
+            const imgcards = document.createElement('img')
+            imgcards.src = './img/pon3.jpg'
+            imgdiv.appendChild(imgcards)
 
-    const typekyrs = document.createElement('input')
-    typekyrs.setAttribute('type','button')
-    typekyrs.classList.add('typecourse')
-    imgdiv.appendChild(typekyrs)
+            const typekyrs = document.createElement('input')
+            typekyrs.setAttribute('type', 'button')
+        typekyrs.value=item.course;
+            typekyrs.classList.add('typecourse')
+            imgdiv.appendChild(typekyrs)
 
-    const zagl = document.createElement('h3');
-    zagl.classList.add('namecourse')
-    zagl.textContent=courslist[0].course;
-    newcards.appendChild(zagl);
+            const zagl = document.createElement('h3');
+            zagl.classList.add('namecourse')
+            zagl.textContent = item.name;
+            newcards.appendChild(zagl);
 
-    const avtor = document.createElement('p')
-    avtor.classList.add('author')
-    avtor.textContent=courslist[0].author
-    newcards.appendChild(avtor)
+            const avtor = document.createElement('p')
+            avtor.classList.add('author')
+            avtor.textContent = item.author;
+            newcards.appendChild(avtor)
 
-    const ratingcourse = document.createElement('div')
-    ratingcourse.classList.add('rating')
-    newcards.appendChild(ratingcourse)
+            const ratingcourse = document.createElement('div')
+            ratingcourse.classList.add('rating')
+            newcards.appendChild(ratingcourse)
 
-    let ratingstars = document.createElement('span')
-    let stars = 5;
-    for (let i = 0; i < stars; i++) {
-        ratingstars = document.createElement('span');
-        if(i < courslist.stars) {
-            ratingstars.classList.add('gold');
+            let ratingstars = document.createElement('span')
+            let stars = 5;
+            for (let i = 0; i < stars; i++) {
+                ratingstars = document.createElement('span');
+                if (i < courslist.stars) {
+                    ratingstars.classList.add('gold');
+                }
+                ratingcourse.appendChild(ratingstars);
+            }
+            const pricecourse = document.createElement('p')
+            pricecourse.classList.add('price')
+            pricecourse.textContent = item.price
+            newcards.appendChild(pricecourse)
         }
-        ratingcourse.appendChild(ratingstars);
-    }
-    const pricecourse = document.createElement('p')
-    pricecourse.classList.add('price')
-    pricecourse.textContent=courslist[0].price
-    newcards.appendChild.add(pricecourse)
+    )
 
 }
+coursesAll(courslist)
+
 const btnadd = document.querySelector('.btnAdd');
 btnadd.addEventListener('click', addCourses);
+
 
 function addCourses() {
     courslist.push({
         id,
-        img: document.querySelector('addImg').value,
-        course: document.querySelector('addName').value,
-        author: document.querySelector('addCompany').value,
-        price: document.querySelector('addPrice').value,
+        img: document.querySelector('.addImg').value,
+        course: document.querySelector('.addName').value,
+        author: document.querySelector('.addCompany').value,
+        price: document.querySelector('.addPrice').value,
     });
-    id=id++;
-coursesAll(courslist);
+    id = id++;
+    coursesAll(courslist);
 }
