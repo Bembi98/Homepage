@@ -314,6 +314,7 @@ h2{
     text-align: center;
 }
 .cards{
+    position:relative;
 padding:24px;
 
 
@@ -362,6 +363,37 @@ padding:24px;
 .rating span.gold {
     color: goldenrod;
 }
+.remove {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+}
+
+.remove:hover {
+    opacity: 1;
+}
+
+.remove::before, .remove::after {
+    position: absolute;
+    left: 15px;
+    content: '';
+    height: 30px;
+    width: 3px;
+    background-color: #000;
+}
+
+.remove:before {
+    transform: rotate(45deg);
+}
+
+.remove:after {
+    transform: rotate(-45deg);
+}
+
+
 .typecourse {
     position: absolute;
     bottom: -15px;
@@ -379,6 +411,7 @@ padding:24px;
 .imgbtn{
     position:relative;
 }
+
 .pinkbtn{
     font-family: Montserrat;
     background: #F72585;

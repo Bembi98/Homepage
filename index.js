@@ -12,12 +12,12 @@ menuBtn.addEventListener('click', () => {
         nav.classList.remove('menu_active');
     }
 });
-let id=9;
+let id = 9;
 let courslist = [
     {
         id: 1,
         course: 'UI/UX Design',
-        name:'Interpersonal skills - work better with others!',
+        name: 'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '1',
@@ -26,7 +26,7 @@ let courslist = [
     {
         id: 2,
         course: 'Web Developer',
-        name:'How to become an Expert Web Developer',
+        name: 'How to become an Expert Web Developer',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '2',
@@ -35,7 +35,7 @@ let courslist = [
     {
         id: 3,
         course: 'UX Research',
-        name:'User Experience Design \n' + 'Essentials',
+        name: 'User Experience Design \n' + 'Essentials',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '3',
@@ -44,7 +44,7 @@ let courslist = [
     {
         id: 4,
         course: '3D Design',
-        name:'Creating 3D Modelling in \n' + 'Blender ',
+        name: 'Creating 3D Modelling in \n' + 'Blender ',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '4',
@@ -54,7 +54,7 @@ let courslist = [
     {
         id: 5,
         course: 'UI/UX Design',
-        name:'How to become an Expert Web Developer',
+        name: 'How to become an Expert Web Developer',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '5',
@@ -64,7 +64,7 @@ let courslist = [
     {
         id: 6,
         course: 'Public Speaking',
-        name:'Interpersonal skills - work better with others!',
+        name: 'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '2',
@@ -74,7 +74,7 @@ let courslist = [
     {
         id: 7,
         course: '3D Design',
-        name:'Creating 3D Modelling in \n' + 'Blender ',
+        name: 'Creating 3D Modelling in \n' + 'Blender ',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '4',
@@ -84,7 +84,7 @@ let courslist = [
     {
         id: 1,
         course: 'UI/UX Design',
-        name:'Interpersonal skills - work better with others!',
+        name: 'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '8',
@@ -97,9 +97,9 @@ let courslist = [
 
 function coursesAll(courslist) {
     const nazovigalerry = document.querySelector('.gallery');
-nazovigalerry.textContent='';
+    nazovigalerry.textContent = '';
     courslist.forEach(function (item) {
-        console.log(123)
+            console.log(123)
             const newcards = document.createElement('div');
             newcards.classList.add('cards');
             nazovigalerry.appendChild(newcards);
@@ -114,9 +114,14 @@ nazovigalerry.textContent='';
 
             const typekyrs = document.createElement('input')
             typekyrs.setAttribute('type', 'button')
-        typekyrs.value=item.course;
+            typekyrs.value = item.course;
             typekyrs.classList.add('typecourse')
             imgdiv.appendChild(typekyrs)
+
+            const deleteBtn = document.createElement('span')
+            deleteBtn.classList.add('remove');
+            deleteBtn.onclick = removeCourse(item.id);
+            newcards.appendChild(deleteBtn)
 
             const zagl = document.createElement('h3');
             zagl.classList.add('namecourse')
@@ -136,7 +141,7 @@ nazovigalerry.textContent='';
             let stars = 5;
             for (let i = 0; i < stars; i++) {
                 ratingstars = document.createElement('span');
-                if (i < courslist.stars) {
+                if (i < item.stars) {
                     ratingstars.classList.add('gold');
                 }
                 ratingcourse.appendChild(ratingstars);
@@ -149,6 +154,7 @@ nazovigalerry.textContent='';
     )
 
 }
+
 coursesAll(courslist)
 
 const btnadd = document.querySelector('.btnAdd');
@@ -165,4 +171,14 @@ function addCourses() {
     });
     id = id++;
     coursesAll(courslist);
+}
+
+const deleteCourse = document.querySelector('.remove');
+deleteCourse.addEventListener('click', removeCourse);
+
+function removeCourse(id) {
+    return function(){
+        courslist = courslist.filter(item => item.id !== id);
+        coursesAll(courslist);
+    }
 }
