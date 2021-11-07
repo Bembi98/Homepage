@@ -129,7 +129,13 @@ function coursesAll(courslist) {
             typekyrs.setAttribute('type', 'button')
             typekyrs.value = item.course;
             typekyrs.classList.add('typecourse')
+        typekyrs.onclick = () => {
+            if (!modOpen) {
+                modActive.classList.add('openMod');
+                modOpen = true;
+            }}
             imgdiv.appendChild(typekyrs)
+
 
 
 
@@ -246,3 +252,47 @@ function editCourses(id) {
 
     }
 }
+
+
+// const modLink = document.querySelectorAll('.typecourse')
+// let unlock=true;
+// const timeout=800;
+// if(modLink.length > 0) {
+//     for(let i=0;i<modLink.length;i++){
+//         const oneLink = modLink[i];
+//         oneLink.addEventListener('click',function (e) {
+//             const modName = oneLink.getAttribute('href').replace('#','')
+//                 modOpen(modName);
+//             e.preventDefault();
+//         })
+//     }
+// }
+// function modOpen(modName) {
+//     if(modName && unlock ){
+//         const modActive = document.querySelector('.modalka.open')
+//     modName.classList.add('open');
+//         modName.addEventListener('click',function(e){
+//             if(!e.target.closest('.modalka_content')){
+//                 modClose(e.target.closest('.modalka'))
+//             }
+//         })
+//     }
+//
+// }
+// function modClose(modActive){
+//     if(unlock){
+//         modActive.classList.remove('open')
+//     }
+// }
+const modBtn = document.querySelectorAll('.typecourse');
+const modActive = document.querySelector('.modalka')
+const modInactive = document.querySelector('.modalka-close')
+let modOpen = false;
+modInactive.addEventListener('click',()=>{
+    modActive.classList.remove('openMod');
+    modOpen = false;
+})
+
+
+
+
