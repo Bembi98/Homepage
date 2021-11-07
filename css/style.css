@@ -79,6 +79,7 @@ body{
     font-style: normal;
     font-size:16px;
     line-height: 1.2;
+    overflow-x: hidden;
 
 }
 .menu-btn {
@@ -157,6 +158,8 @@ body{
     padding: 35.35px 30px 20px;
     justify-content: space-around;
 
+
+
 }
 .menu_active {
     transform: translateX(0%);
@@ -211,6 +214,7 @@ margin-top:50px;
     margin : 0 auto;
     width: 100%;
     padding: 40px 50px;
+
 }
 .search{
     position:relative;
@@ -226,6 +230,7 @@ margin-top:50px;
     flex-wrap: wrap;
     align-items:flex-end;
     justify-content: space-between;
+
 
 }
 .header_list {
@@ -330,8 +335,11 @@ padding:24px;
     grid-gap: 50px;
 }
 .cards img {
-    width:100%;
-    height: 220px;
+    height: auto;
+    width: auto;
+    max-width: 220px;
+    max-height: 220px;
+
 
 }
 .namecourse{
@@ -410,9 +418,7 @@ padding:24px;
     padding: 4px 24px;
 
 }
-.btnAdd{
-    position:absolute;
-}
+
 .imgbtn{
     position:relative;
 }
@@ -449,6 +455,17 @@ margin-top: 56px;
     color: darkslateblue;
     border:none;
 font-weight: 600;
+}
+.inBtn{
+    border-radius: 8px;
+    padding: 8px 32px;
+    background: #4586D6;
+    color: #fff;
+    border:none ;
+}
+.inBtn::placeholder{
+
+    color:#ffffff;
 }
 .catbtn:hover {
     font-family: Montserrat;
@@ -519,6 +536,11 @@ font-weight: 600;
 }
 .mentorzagl{
     margin-bottom: 32px;
+}
+.inputEditAdd{
+    display:flex;
+   justify-content:space-between;
+    padding:30px 30px;
 }
 .mentorall img{
     height:100%;
@@ -648,6 +670,13 @@ a {
     .glavnoeokno{
         width:100%;
     }
+    .inBtn{
+        width:150px;
+    }
+    .inBtn::placeholder{
+        font-size: x-small;;
+    }
+
 }
 @media(max-width:1330px){
     .glavnoeokno {
@@ -657,6 +686,7 @@ a {
 
     }
     .search-bar{
+
         width:90px;
     }
     .moneyimg{
@@ -673,6 +703,10 @@ a {
     .catbtn{
         padding: 8px 20px;
     }
+    .inBtn{
+        padding: 4px 10px;
+    }
+
     .gallery{
         grid-template-columns: repeat(2,1fr);
     }
@@ -714,6 +748,12 @@ a {
    }
     .toptext{
         margin: 0 auto;
+    }
+    .inBtn{
+        width:100px;
+    }
+    .inBtn::placeholder{
+        font-size: x-small;;
     }
 }
 

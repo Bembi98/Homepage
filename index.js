@@ -131,6 +131,8 @@ function coursesAll(courslist) {
             typekyrs.classList.add('typecourse')
             imgdiv.appendChild(typekyrs)
 
+
+
             const deleteBtn = document.createElement('span')
             deleteBtn.classList.add('remove');
             deleteBtn.onclick = removeCourse(item.id);
@@ -190,8 +192,10 @@ function addCourses() {
             course: document.querySelector('.addName').value,
             author: document.querySelector('.addCompany').value,
             price: document.querySelector('.addPrice').value,
-        });
+            name: document.querySelector('.addInfo').value,
 
+        });
+        clearInput();
         id++;
     } else {
         courslist = courslist.map(item => item.id === selectedItemId ? {
