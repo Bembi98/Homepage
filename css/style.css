@@ -101,6 +101,11 @@ body{
     box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
     transition: all .5s ease-in-out;
 }
+.edit{
+    position: absolute;
+    right:20px;
+    top:50px;
+}
 
 .menu-btn__burger::before,
 .menu-btn__burger::after {
@@ -642,6 +647,20 @@ a {
     }
     .glavnoeokno{
         width:100%;
+    }
+}
+@media(max-width:1330px){
+    .glavnoeokno {
+        width: 100%;
+    }
+    .h1{
+
+    }
+    .search-bar{
+        width:90px;
+    }
+    .moneyimg{
+        display:none;
     }
 }
 @media(max-width:768px){

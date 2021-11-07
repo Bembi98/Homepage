@@ -13,6 +13,7 @@ menuBtn.addEventListener('click', () => {
     }
 });
 let id = 9;
+let selectedItemId = null;
 let courslist = [
     {
         id: 1,
@@ -21,7 +22,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '1',
-        price: '$355',
+        price: '355',
     },
     {
         id: 2,
@@ -30,7 +31,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '2',
-        price: '$360',
+        price: '360',
     },
     {
         id: 3,
@@ -39,7 +40,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '3',
-        price: '$365',
+        price: '365',
     },
     {
         id: 4,
@@ -48,7 +49,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '4',
-        price: '$370',
+        price: '370',
 
     },
     {
@@ -58,7 +59,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '5',
-        price: '$375',
+        price: '375',
 
     },
     {
@@ -68,7 +69,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '2',
-        price: '$380',
+        price: '380',
 
     },
     {
@@ -78,7 +79,7 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '4',
-        price: '$385',
+        price: '385',
 
     },
     {
@@ -88,18 +89,30 @@ let courslist = [
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '8',
-        price: '$390',
+        price: '390',
 
     }
 
 ];
+const editInfo = document.querySelector('.addInfo')
+const editName = document.querySelector('.addName')
+const editImg = document.querySelector('.addImg')
+const editAuthor = document.querySelector('.addCompany')
+const editPrice = document.querySelector('.addPrice')
 
+function clearInput() {
+    editPrice.value = '';
+    editAuthor.value = '';
+    editName.value = '';
+    editInfo.value = '';
+    editImg.value = '';
+}
 
 function coursesAll(courslist) {
     const nazovigalerry = document.querySelector('.gallery');
     nazovigalerry.textContent = '';
     courslist.forEach(function (item) {
-            console.log(123)
+
             const newcards = document.createElement('div');
             newcards.classList.add('cards');
             nazovigalerry.appendChild(newcards);
@@ -137,6 +150,13 @@ function coursesAll(courslist) {
             ratingcourse.classList.add('rating')
             newcards.appendChild(ratingcourse)
 
+            const editbtn = document.createElement('input')
+            editbtn.classList.add('edit')
+            editbtn.setAttribute('type', 'button')
+            editbtn.value = 'edit'
+            editbtn.onclick = editCourses(item.id)
+            newcards.appendChild(editbtn);
+
             let ratingstars = document.createElement('span')
             let stars = 5;
             for (let i = 0; i < stars; i++) {
@@ -148,7 +168,7 @@ function coursesAll(courslist) {
             }
             const pricecourse = document.createElement('p')
             pricecourse.classList.add('price')
-            pricecourse.textContent = item.price
+            pricecourse.textContent = "$" + item.price
             newcards.appendChild(pricecourse)
         }
     )
@@ -162,14 +182,30 @@ btnadd.addEventListener('click', addCourses);
 
 
 function addCourses() {
-    courslist.push({
-        id,
-        img: document.querySelector('.addImg').value,
-        course: document.querySelector('.addName').value,
-        author: document.querySelector('.addCompany').value,
-        price: document.querySelector('.addPrice').value,
-    });
-    id = id++;
+
+    if (btnadd.value === 'Add') {
+        courslist.push({
+            id,
+            img: document.querySelector('.addImg').value,
+            course: document.querySelector('.addName').value,
+            author: document.querySelector('.addCompany').value,
+            price: document.querySelector('.addPrice').value,
+        });
+
+        id++;
+    } else {
+        courslist = courslist.map(item => item.id === selectedItemId ? {
+            ...item,
+            name: editInfo.value,
+            course: editName.value,
+            img: editImg.value,
+            price: editPrice.value,
+            author: editAuthor.value,
+        } : item)
+btnadd.value = 'Add'
+        clearInput();
+
+    }
     coursesAll(courslist);
 }
 
@@ -177,8 +213,32 @@ const deleteCourse = document.querySelector('.remove');
 deleteCourse.addEventListener('click', removeCourse);
 
 function removeCourse(id) {
-    return function(){
+    return function () {
         courslist = courslist.filter(item => item.id !== id);
         coursesAll(courslist);
+    }
+}
+
+
+const editCourse = document.querySelector('.edit');
+editCourse.addEventListener('click', editCourses);
+
+function editCourses(id) {
+    return function () {
+
+        if (btnadd.value === 'Add') {
+            window.scrollTo({
+                top : 500,behavior:'smooth'
+            })
+            const item = courslist.find(item => item.id === id);
+            editInfo.value = item.name;
+            editName.value = item.course;
+            editImg.value = item.img;
+            editAuthor.value = item.author;
+            editPrice.value = item.price
+            btnadd.value = 'Save';
+            selectedItemId = id;
+        }
+
     }
 }
