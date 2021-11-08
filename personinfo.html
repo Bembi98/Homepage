@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="header">
+    <div class="wrapper">
+        <div class="header_wrapper">
+            <div class="header_logo">
+
+                <a href="" class="header_logo-link">
+                    <img src="./img/svg/Logo.svg" alt="Home Page" class="header_logo-pic">
+                </a>
+            </div>
+
+            <div class="search">
+                <input type="text" class="search-bar " placeholder="Type to search">
+                <img src="./img/Search.png" alt="search">
+            </div>
+
+            <nav class="header_nav">
+
+                <ul class="header_list">
+
+                    <li class="header_item">
+                        <a href="" class="header_link">Category</a>
+                    </li>
+                    <li class="header_item">
+                        <a href="" class="header_link ">Become an Mentor</a>
+                    </li>
+                    <li class="header_item">
+                        <input type="button" class="whitebtn" value="Login">
+                    </li>
+                    <li class="header_item">
+                        <input type="button" class="pinkbtn " value="Sign Up">
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu-btn">
+                <a class="menu-btn__burger"></a>
+            </div>
+            <div class="menu-list ">
+                <nav class="header_nav">
+                    <ul class="header_list2">
+
+                        <li class="header_item">
+                            <a href="" class="header_link">Category</a>
+                        </li>
+                        <li class="header_item">
+                            <a href="" class="header_link ">Become an Mentor</a>
+                        </li>
+                        <li class="header_item">
+                            <input type="button" class="whitebtn" value="Login">
+                        </li>
+                        <li class="header_item">
+                            <input type="button" class="pinkbtn " value="Sign Up">
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+</header>
+<main class="main">
+
+
+    <div class="wrapper">
+        <div class="tabs">
+            <div class="tabs__nav">
+                <button class="tabs__nav-btn" type="button" data-tab="#tab_1">Students</button>
+                <button class="tabs__nav-btn" type="button" data-tab="#tab_2">
+                    Coaches
+                </button>
+
+            </div>
+            <div class="tabs__content">
+                <div class="tabs__item" id="tab_1"></div>
+                <div class="tabs__item" id="tab_2"></div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer>
+    <div class="wrapper">
+        <div class="footerdiv">
+            <div class="perviydiv">
+                <a href="" class="foter-logo">
+                    <img src="./img/foterlogo.png" alt="Home Page" class="footer-logo">
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Amet tristique placerat eleifend aliquam pellentesque facilisis ultrices.
+                    Imperdiet mus urna egestas at tellus. </p>
+            </div>
+            <div class="vtoroydiv">
+                <div class="firststolb">
+                    <p class="zaglvoter">About</p>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Mentor</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+
+                </div>
+                <div class="vtoroistolb">
+                    <p class="zaglvoter">Support</p>
+                    <ul>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Help & Support</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+
+                </div>
+                <div class="tretiystolb">
+                    <p class="zaglvoter">Company</p>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Code of Conduct</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</footer>
+<div class="modalka">
+    <div class="modalka_body">
+        <div class="modalka_content">
+            <input type="button" class="modalka-close" value="X">
+            <div class="modalka-title">Full Info</div>
+            <div class="modalka_text">
+                <p id='gender'></p>
+                <p id='type'></p>
+                <p id='national'></p>
+                <p id='location'></p>
+                <p id='age'></p>
+                <p id='birthday'></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="personinfo.js"></script>
+</html>

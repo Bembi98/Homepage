@@ -23,6 +23,7 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '1',
         price: '355',
+        info: 'Some text  about UI/UX Design '
     },
     {
         id: 2,
@@ -32,6 +33,7 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '2',
         price: '360',
+        info: 'Some text  about Web Developer '
     },
     {
         id: 3,
@@ -41,6 +43,7 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '3',
         price: '365',
+        info: 'Some text  about UX Research '
     },
     {
         id: 4,
@@ -50,7 +53,7 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '4',
         price: '370',
-
+        info: 'Some text  about 3D Design '
     },
     {
         id: 5,
@@ -60,6 +63,7 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '5',
         price: '375',
+        info: 'Some text  about UI/UX Design '
 
     },
     {
@@ -70,6 +74,7 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '2',
         price: '380',
+        info: 'Some text  about Public Speaking '
 
     },
     {
@@ -80,16 +85,18 @@ let courslist = [
         author: 'Ilusha Company',
         stars: '4',
         price: '385',
+        info: 'Some text  about 3D Design '
 
     },
     {
-        id: 1,
+        id: 8,
         course: 'UI/UX Design',
         name: 'Interpersonal skills - work better with others!',
         img: './img/pon3.jpg',
         author: 'Ilusha Company',
         stars: '8',
         price: '390',
+        info: 'Some text  about UI/UX Design '
 
     }
 
@@ -129,14 +136,14 @@ function coursesAll(courslist) {
             typekyrs.setAttribute('type', 'button')
             typekyrs.value = item.course;
             typekyrs.classList.add('typecourse')
-        typekyrs.onclick = () => {
-            if (!modOpen) {
-                modActive.classList.add('openMod');
-                modOpen = true;
-            }}
+            typekyrs.onclick = () => {
+                if (!modOpen) {
+                    modActive.classList.add('openMod');
+                    modOpen = true;
+                }
+                courseShowDetails(item)
+            }
             imgdiv.appendChild(typekyrs)
-
-
 
 
             const deleteBtn = document.createElement('span')
@@ -212,7 +219,7 @@ function addCourses() {
             price: editPrice.value,
             author: editAuthor.value,
         } : item)
-btnadd.value = 'Add'
+        btnadd.value = 'Add'
         clearInput();
 
     }
@@ -238,7 +245,7 @@ function editCourses(id) {
 
         if (btnadd.value === 'Add') {
             window.scrollTo({
-                top : 500,behavior:'smooth'
+                top: '450', behavior: 'smooth'
             })
             const item = courslist.find(item => item.id === id);
             editInfo.value = item.name;
@@ -253,46 +260,24 @@ function editCourses(id) {
     }
 }
 
-
-// const modLink = document.querySelectorAll('.typecourse')
-// let unlock=true;
-// const timeout=800;
-// if(modLink.length > 0) {
-//     for(let i=0;i<modLink.length;i++){
-//         const oneLink = modLink[i];
-//         oneLink.addEventListener('click',function (e) {
-//             const modName = oneLink.getAttribute('href').replace('#','')
-//                 modOpen(modName);
-//             e.preventDefault();
-//         })
-//     }
-// }
-// function modOpen(modName) {
-//     if(modName && unlock ){
-//         const modActive = document.querySelector('.modalka.open')
-//     modName.classList.add('open');
-//         modName.addEventListener('click',function(e){
-//             if(!e.target.closest('.modalka_content')){
-//                 modClose(e.target.closest('.modalka'))
-//             }
-//         })
-//     }
-//
-// }
-// function modClose(modActive){
-//     if(unlock){
-//         modActive.classList.remove('open')
-//     }
-// }
 const modBtn = document.querySelectorAll('.typecourse');
 const modActive = document.querySelector('.modalka')
 const modInactive = document.querySelector('.modalka-close')
 let modOpen = false;
-modInactive.addEventListener('click',()=>{
+modInactive.addEventListener('click', () => {
     modActive.classList.remove('openMod');
     modOpen = false;
 })
 
+function courseShowDetails(courslist) {
+    const pName = document.querySelector('#moreNameCourse')
+    const pInfo = document.querySelector('#moreInfoCourse')
+
+    pName.textContent = `${courslist.course}`;
+    pInfo.textContent = `${courslist.info}`;
+
+
+}
 
 
 
