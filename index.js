@@ -1,19 +1,3 @@
-const menuBtn = document.querySelector('.menu-btn');
-const nav = document.querySelector('.menu-list');
-let menuOpen = false;
-menuBtn.addEventListener('click', () => {
-    if (!menuOpen) {
-        menuBtn.classList.add('open');
-        menuOpen = true;
-        nav.classList.add('menu_active');
-    } else {
-        menuBtn.classList.remove('open');
-        menuOpen = false;
-        nav.classList.remove('menu_active');
-    }
-});
-let id = 9;
-let selectedItemId = null;
 let courslist = [
     {
         id: 1,
@@ -101,11 +85,43 @@ let courslist = [
     }
 
 ];
+let id = 9;
+let selectedItemId = null;
+let menuOpen = false;
+let modOpen = false;
+
 const editInfo = document.querySelector('.addInfo')
 const editName = document.querySelector('.addName')
 const editImg = document.querySelector('.addImg')
 const editAuthor = document.querySelector('.addCompany')
 const editPrice = document.querySelector('.addPrice')
+const menuBtn = document.querySelector('.menu-btn');
+const nav = document.querySelector('.menu-list');
+const btnadd = document.querySelector('.btnAdd');
+const modActive = document.querySelector('.modalka')
+const modInactive = document.querySelector('.modalka-close')
+
+modInactive.addEventListener('click', () => {
+    modActive.classList.remove('openMod');
+    modOpen = false;
+})
+
+menuBtn.addEventListener('click', () => {
+    if (!menuOpen) {
+        menuBtn.classList.add('open');
+        menuOpen = true;
+        nav.classList.add('menu_active');
+    } else {
+        menuBtn.classList.remove('open');
+        menuOpen = false;
+        nav.classList.remove('menu_active');
+    }
+});
+btnadd.addEventListener('click', addCourses);
+
+
+coursesAll(courslist)
+
 
 function clearInput() {
     editPrice.value = '';
@@ -190,11 +206,6 @@ function coursesAll(courslist) {
 
 }
 
-coursesAll(courslist)
-
-const btnadd = document.querySelector('.btnAdd');
-btnadd.addEventListener('click', addCourses);
-
 
 function addCourses() {
 
@@ -226,8 +237,6 @@ function addCourses() {
     coursesAll(courslist);
 }
 
-const deleteCourse = document.querySelector('.remove');
-deleteCourse.addEventListener('click', removeCourse);
 
 function removeCourse(id) {
     return function () {
@@ -236,9 +245,6 @@ function removeCourse(id) {
     }
 }
 
-
-const editCourse = document.querySelector('.edit');
-editCourse.addEventListener('click', editCourses);
 
 function editCourses(id) {
     return function () {
@@ -259,15 +265,6 @@ function editCourses(id) {
 
     }
 }
-
-const modBtn = document.querySelectorAll('.typecourse');
-const modActive = document.querySelector('.modalka')
-const modInactive = document.querySelector('.modalka-close')
-let modOpen = false;
-modInactive.addEventListener('click', () => {
-    modActive.classList.remove('openMod');
-    modOpen = false;
-})
 
 function courseShowDetails(courslist) {
     const pName = document.querySelector('#moreNameCourse')
