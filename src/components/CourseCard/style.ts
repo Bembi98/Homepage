@@ -4,6 +4,7 @@ export const styles = createStyles({
     card: {
         maxWidth: 345,
         padding:20,
+        borderRadius:12,
 
     },
     author: {
@@ -15,9 +16,9 @@ export const styles = createStyles({
     },
     btnCourse:{
         top:0,
-        left:'30%',
         borderRadius:8,
         background:'#FFFFFF',
+
 
     },
     like:{
@@ -26,7 +27,8 @@ export const styles = createStyles({
     cardImg: {
         display:'flex',
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        flexDirection:'column',
     },
     price :{
       paddingTop:10,

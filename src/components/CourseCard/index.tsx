@@ -12,14 +12,14 @@ class CourseCard extends React.Component<Props> {
     render() {
         const {course, classes} = this.props;
         return (
-            <Card className={classes.card}>
+            <Card variant="outlined" className={classes.card}>
                 <CardMedia className={classes.cardImg}>
                     <img className={classes.img} src={course.img} alt={course.name}/>
+                    <Button className={classes.btnCourse} variant="outlined">{course.course}</Button>
                 </CardMedia>
-                <Button className={classes.btnCourse} variant="outlined">{course.course}</Button>
                 <Typography className={classes.nameCourse} variant="h5">{course.name}</Typography>
                 <Typography className={classes.author} paragraph>{course.author} </Typography>
-                <Rating/>
+                <Rating value={course.stars} />
                 <Typography className={classes.price} paragraph>{course.price} $</Typography>
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon className={classes.like} />
