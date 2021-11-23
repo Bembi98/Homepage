@@ -16,7 +16,7 @@ class BasicRating extends React.Component<any, State> {
                 <Rating
                     name="simple-controlled"
                     value={this.state.stars}
-                    onChange={(event, newValue) => {
+                    onChange={(event: any,newValue:any) => {
                         this.setState({stars: Number(newValue)})
                     }}
                 />
