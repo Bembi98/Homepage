@@ -1,16 +1,10 @@
-
 import React from "react";
-import { data } from "./data";
-import CourseCard from "./components/CourseCard"
-
-
-
+import CourseGallery from "./pages/Courses";
 
 
 class App extends React.Component {
     render() {
-        return <CourseCard course={data[0]} />;
-
+        return <CourseGallery  />;
     }
 }
 
