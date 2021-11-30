@@ -1,5 +1,3 @@
-import {WithStyles} from "@material-ui/core";
-import {styles} from "../CourseCard/style";
 
 export type Course = {
     id: number;
@@ -12,6 +10,9 @@ export type Course = {
     info: string;
 };
 
+export interface State  {
+    stars:number;
+}
 export interface Props  {
     value: number;
 
