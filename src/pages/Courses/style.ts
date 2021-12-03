@@ -1,4 +1,4 @@
-import { createStyles } from '@material-ui/core/styles';
+import {createStyles} from '@material-ui/core/styles';
 
 export const styles = createStyles({
     courseGallery: {
@@ -14,5 +14,16 @@ export const styles = createStyles({
         '@media (max-width: 420px)': {
             display: "block",
         },
+    },
+    courseInfo: {
+        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+    fab: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
     }
 });

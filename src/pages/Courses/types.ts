@@ -1,6 +1,7 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
 
+
 export type Course = {
     id: number;
     course: string;
@@ -14,10 +15,10 @@ export type Course = {
 
 export interface Props extends WithStyles <typeof styles> {
 
-
 }
 export interface State  {
     data:Course[]
+    selectedCourse: Course | null,
 
 
 }
