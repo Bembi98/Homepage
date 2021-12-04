@@ -16,6 +16,7 @@ export interface Props extends WithStyles <typeof styles> {
     course: Course;
     onDelete:()=>void;
     handleSelectCourse: () => void
+
 }
 export interface State  {
    data:Course;

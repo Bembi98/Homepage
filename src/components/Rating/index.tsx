@@ -9,7 +9,6 @@ state={
     stars:this.props.value
 }
     render() {
-     const {value}=this.props;
         return (
             <Box
             >
