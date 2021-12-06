@@ -14,5 +14,9 @@ export type Course = {
 
 export interface Props extends WithStyles <typeof styles> {
     course: Course;
+    onDelete:()=>void;
+}
+export interface State  {
+   data:Course
 
 }
