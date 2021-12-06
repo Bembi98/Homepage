@@ -1,6 +1,3 @@
-import {WithStyles} from "@material-ui/core";
-import {styles} from "./style";
-
 export type Course = {
     id: number;
     course: string;
@@ -11,6 +8,3 @@ export type Course = {
     price: number;
     info: string;
 };
-export interface Props extends WithStyles <typeof styles> {
-
-}

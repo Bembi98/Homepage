@@ -9,12 +9,13 @@ state={
     stars:this.props.value
 }
     render() {
+    const {stars}=this.state
         return (
             <Box
             >
                 <Rating
                     name="simple-controlled"
-                    value={this.state.stars}
+                    value={stars}
                     onChange={(event: any,newValue:any) => {
                         this.setState({stars: Number(newValue)})
                     }}

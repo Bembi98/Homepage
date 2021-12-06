@@ -12,7 +12,6 @@ import AddIcon from "@mui/icons-material/Add";
 import Button from '@mui/material/Button';
 
 class CoursePage extends React.Component<Props, State> {
-    maxId = 100;
     state = {
         data,
         selectedCourse: null,

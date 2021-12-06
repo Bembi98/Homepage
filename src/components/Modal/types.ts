@@ -18,6 +18,3 @@ export interface Props extends WithStyles <typeof styles> {
     open:boolean
     onClose: ()=>void;
 }
-export interface State  {
-
-}
