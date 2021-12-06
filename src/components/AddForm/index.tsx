@@ -4,7 +4,6 @@ import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 
 class CardAddForm extends React.Component<Props> {
-
     render() {
         const {classes} = this.props;
         return (
@@ -14,5 +13,4 @@ class CardAddForm extends React.Component<Props> {
         )
     }
 }
-
 export default CardAddForm;

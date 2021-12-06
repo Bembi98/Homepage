@@ -12,7 +12,6 @@ state={
         return (
             <Box
             >
-
                 <Rating
                     name="simple-controlled"
                     value={this.state.stars}

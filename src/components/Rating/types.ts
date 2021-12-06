@@ -1,4 +1,3 @@
-
 export type Course = {
     id: number;
     course: string;
@@ -9,11 +8,9 @@ export type Course = {
     price: number;
     info: string;
 };
-
 export interface State  {
     stars:number;
 }
 export interface Props  {
     value: number;
-
 }

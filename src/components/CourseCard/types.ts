@@ -11,12 +11,11 @@ export type Course = {
     price: number;
     info: string;
 };
-
 export interface Props extends WithStyles <typeof styles> {
     course: Course;
     onDelete:()=>void;
     handleSelectCourse: () => void
-
+    handleOpenEditModal:()=>void
 }
 export interface State  {
    data:Course;

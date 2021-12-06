@@ -7,9 +7,6 @@ import {Props} from "./types";
 
 
 class BasicModal extends React.Component<Props> {
-
-
-
     render() {
         const {classes, children,onClose,open} = this.props;
         return (
@@ -21,17 +18,12 @@ class BasicModal extends React.Component<Props> {
                 >
                     <Box className={classes.modal}>
                         <div>
-
                             {children}
-
                         </div>
                     </Box>
-
                 </Modal>
         );
     }
 }
-
-
 export default withStyles(styles)(BasicModal);
 

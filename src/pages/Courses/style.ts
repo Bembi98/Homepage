@@ -32,7 +32,5 @@ export const styles = createStyles({
         padding:30,
         top: '60%',
         left: '50%',
-
-
     },
 });
