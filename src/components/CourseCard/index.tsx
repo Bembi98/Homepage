@@ -9,21 +9,15 @@ import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-
-
-
 class CourseCard extends React.Component<Props, State> {
-
     render() {
-
-        const {course, classes, onDelete,handleSelectCourse} = this.props;
+        const {course, classes, onDelete,handleSelectCourse,handleOpenEditModal} = this.props;
         return (
             <Card variant="outlined" className={classes.card}>
                 <CardMedia className={classes.cardImg}>
                     <img className={classes.img} src={course.img} alt={course.name}/>
                     <Button className={classes.btnCourse} variant="outlined" onClick={handleSelectCourse}  >{course.course} </Button>
                 </CardMedia>
-
                 <Typography className={classes.nameCourse} variant="h5">{course.name}</Typography>
                 <Typography className={classes.author} paragraph>{course.author} </Typography>
                 <Rating value={course.stars}/>
@@ -38,11 +32,10 @@ class CourseCard extends React.Component<Props, State> {
                     <DeleteIcon onClick={onDelete}/>
                 </IconButton>
                 <IconButton aria-label="edit">
-                    <EditIcon/>
+                    <EditIcon onClick={handleOpenEditModal}/>
                 </IconButton>
             </Card>
         );
     }
 }
-
 export default withStyles(styles)(CourseCard);

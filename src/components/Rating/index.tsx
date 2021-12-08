@@ -9,11 +9,10 @@ state={
     stars:this.props.value
 }
     render() {
-     const {stars}=this.state;
+    const {stars}=this.state
         return (
             <Box
             >
-
                 <Rating
                     name="simple-controlled"
                     value={stars}

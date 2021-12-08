@@ -79,7 +79,7 @@ export const data: Course[] = [
         name: 'Interpersonal skills - work better with others!',
         img: "./image/pin.PNG",
         author: 'Ilusha Company',
-        stars: 8,
+        stars: 3,
         price: 390,
         info: 'Some text  about UI/UX Design '
 

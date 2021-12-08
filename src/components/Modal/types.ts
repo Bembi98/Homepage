@@ -13,12 +13,8 @@ export type Course = {
     price: number;
     info: string;
 };
-
 export interface Props extends WithStyles <typeof styles> {
     children: React.ReactNode
     open:boolean
     onClose: ()=>void;
-}
-export interface State  {
-
 }

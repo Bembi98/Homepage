@@ -5,7 +5,6 @@ export const styles = createStyles({
         maxWidth: 345,
         padding:20,
         borderRadius:12,
-
     },
     author: {
         paddingTop: 20,
@@ -18,8 +17,6 @@ export const styles = createStyles({
         top:0,
         borderRadius:8,
         background:'#FFFFFF',
-
-
     },
     like:{
         color:'#FF0000',
@@ -55,5 +52,4 @@ export const styles = createStyles({
         boxshadow: 24,
         p: 4,
     },
-
 });
