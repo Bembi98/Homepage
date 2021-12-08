@@ -25,5 +25,14 @@ export const styles = createStyles({
         position: 'absolute',
         top: '50%',
         left: '50%',
-    }
+    },
+    inputAdd:{
+        display:'flex',
+       flexDirection:'column',
+        padding:30,
+        top: '60%',
+        left: '50%',
+
+
+    },
 });

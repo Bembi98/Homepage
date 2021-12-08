@@ -8,7 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import BasicModal from "../Modal";
+
 
 
 
@@ -23,6 +23,7 @@ class CourseCard extends React.Component<Props, State> {
                     <img className={classes.img} src={course.img} alt={course.name}/>
                     <Button className={classes.btnCourse} variant="outlined" onClick={handleSelectCourse}  >{course.course} </Button>
                 </CardMedia>
+
                 <Typography className={classes.nameCourse} variant="h5">{course.name}</Typography>
                 <Typography className={classes.author} paragraph>{course.author} </Typography>
                 <Rating value={course.stars}/>
