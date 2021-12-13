@@ -11,8 +11,7 @@ export type Course = {
     price: number;
     info: string;
 };
-export interface Props extends WithStyles <typeof styles> {
-}
+
 export interface State {
     data: Course[]
     selectedCourse: Course | null,
@@ -20,4 +19,16 @@ export interface State {
     inputValues:any
     selectedForEdit: Course | null
     inputEdit:any
+}
+export interface DispatchProps {
+    setCourses: (course: Course[]) => void;
+    addCourse: (course: Course) => void;
+    deleteCourse: (id:number) => void;
+    editCourse:(id:number,course:Course)=>void;
+}
+export interface StateProps {
+    courses: Course[];
+}
+export interface ComponentProps extends StateProps, DispatchProps,WithStyles <typeof styles>{
+
 }
