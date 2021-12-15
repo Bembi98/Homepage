@@ -18,9 +18,11 @@ import  {DispatchProps,StateProps} from './types'
 
 class CoursePage extends React.Component<ComponentProps,State> {
     componentDidMount() {
-        this.props.setCourses(data);
-        const courses = localStorage.getItem("courses") || "[]";
-        this.props.setCourses(JSON.parse(courses));
+        const courses = localStorage.getItem("courses") ;
+        if(!courses){
+            localStorage.setItem("courses",JSON.stringify(data))
+        }
+        this.props.setCourses(courses ? JSON.parse(courses ) : data);
     }
     state = {
         data,
@@ -32,7 +34,7 @@ class CoursePage extends React.Component<ComponentProps,State> {
     };
     onSubmitHandler = () => {
         const newCourse = {
-            id: Symbol('id'),
+            id: new Date().getTime().toString() + Math.floor(Math.random()*1000000),
             info: '',
             img: this.state.inputValues.img,
             name: this.state.inputValues.course,
@@ -55,9 +57,11 @@ class CoursePage extends React.Component<ComponentProps,State> {
             price: Number(`${this.state.inputEdit.price}`),
         }
       this.props.editCourse(Number(this.state.inputEdit.id),newCourse)
+        localStorage.setItem("courses", JSON.stringify(this.props.courses.map((course) => course.id === newCourse.id? newCourse : course )))
     }
     handleDelete = (id: number) => () => {
        this.props.deleteCourse(id)
+        localStorage.setItem("courses", JSON.stringify(this.props.courses.filter((course) => course.id !== id)));
     };
     handleSelectCourse = (course: Course) => () => {
         this.setState({selectedCourse: course})
