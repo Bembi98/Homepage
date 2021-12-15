@@ -2,7 +2,7 @@ import React from "react";
 import CourseCard from "../../components/CourseCard/index";
 import {withStyles} from "@material-ui/core";
 import {styles} from "./style";
-import {Props, State} from "./types";
+import {ComponentProps,State} from "./types";
 import {data} from '../../data'
 import {Course} from "./types"
 import Modal from "../../components/Modal";
@@ -10,8 +10,16 @@ import Typography from '@mui/material/Typography';
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import Button from '@mui/material/Button';
+import {deleteCourse,addCourse,setCourses,editCourse} from "../../store/courses/actions";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+import  {DispatchProps,StateProps} from './types'
 
-class CoursePage extends React.Component<Props, State> {
+
+class CoursePage extends React.Component<ComponentProps,State> {
+    componentDidMount() {
+        this.props.setCourses(data);
+    }
     state = {
         data,
         selectedCourse: null,
@@ -21,19 +29,16 @@ class CoursePage extends React.Component<Props, State> {
         inputEdit: {id:"",img: "", name: '', course: '', author: '', stars: '', price: ''}
     };
     onSubmitHandler = () => {
-        this.setState(({data}) => ({
-            data: [...data,
-                {
-                    id: Symbol('id'),
-                    info: '',
-                    img: this.state.inputValues.img,
-                    name: this.state.inputValues.course,
-                    course: this.state.inputValues.name,
-                    author: this.state.inputValues.author,
-                    stars: Number(`${this.state.inputValues.stars}`),
-                    price: Number(`${this.state.inputValues.price}`),
-                }]
-        }))
+       this.props.addCourse( {
+           id: Symbol('id'),
+           info: '',
+           img: this.state.inputValues.img,
+           name: this.state.inputValues.course,
+           course: this.state.inputValues.name,
+           author: this.state.inputValues.author,
+           stars: Number(`${this.state.inputValues.stars}`),
+           price: Number(`${this.state.inputValues.price}`),
+       })
     }
     onSubmitEditHandler = () => {
         const newCourse = {
@@ -46,16 +51,10 @@ class CoursePage extends React.Component<Props, State> {
             stars: Number(`${this.state.inputEdit.stars}`),
             price: Number(`${this.state.inputEdit.price}`),
         }
-        this.setState(({data}) => ({
-            data: [...data.map((item)=>item.id === newCourse.id? newCourse :item),
-                ]
-        }))
-        console.log(newCourse)
+      this.props.editCourse(Number(this.state.inputEdit.id),newCourse)
     }
     handleDelete = (id: number) => () => {
-        this.setState(({data}) => ({
-            data: data.filter((item) => item.id !== id)
-        }));
+       this.props.deleteCourse(id)
     };
     handleSelectCourse = (course: Course) => () => {
         this.setState({selectedCourse: course})
@@ -88,12 +87,12 @@ class CoursePage extends React.Component<Props, State> {
     }
     render() {
         const {classes} = this.props;
-        const {data, selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
+        const { selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
         const course = selectedCourse as any
         return (
             <>
                 <div className={classes.courseGallery}>
-                    {data.map((course) => (
+                    {this.props.courses.map((course) => (
                         <CourseCard handleOpenEditModal={this.handleOpenEditModal(course)} course={course}
                                     handleSelectCourse={this.handleSelectCourse(course)}
                                     onDelete={this.handleDelete(course.id)}/>
@@ -175,4 +174,21 @@ class CoursePage extends React.Component<Props, State> {
         );
     }
 }
-export default withStyles(styles)(CoursePage);
+const mapStateToProps = (state: any): StateProps => ({
+    courses: state.courses.courses
+});
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+    setCourses: (courses: Course[]) => {
+        dispatch(setCourses(courses));
+    },
+    addCourse: (course: Course) => {
+        dispatch(addCourse(course));
+    },
+    deleteCourse:(id:number)=>{
+        dispatch(deleteCourse(id))
+    },
+    editCourse:(id:number,course:Course)=>{
+        dispatch(editCourse(id,course))
+    }
+});
+export default connect (mapStateToProps, mapDispatchToProps) (withStyles(styles)(CoursePage));

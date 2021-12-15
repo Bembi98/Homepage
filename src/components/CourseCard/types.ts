@@ -19,6 +19,7 @@ export interface Props extends WithStyles <typeof styles> {
 }
 export interface State  {
    data:Course;
-
-
+}
+interface DispatchProps {
+    deleteCourse: (id: number) => void;
 }

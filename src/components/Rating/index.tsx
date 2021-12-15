@@ -8,6 +8,11 @@ class BasicRating extends React.Component<Props,State> {
 state={
     stars:this.props.value
 }
+componentDidUpdate (prevProps : Props){
+    if (this.props.value !== prevProps.value){
+        this.setState({stars:this.props.value})
+    }
+}
     render() {
     const {stars}=this.state
         return (
