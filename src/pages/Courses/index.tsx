@@ -19,6 +19,8 @@ import  {DispatchProps,StateProps} from './types'
 class CoursePage extends React.Component<ComponentProps,State> {
     componentDidMount() {
         this.props.setCourses(data);
+        const courses = localStorage.getItem("courses") || "[]";
+        this.props.setCourses(JSON.parse(courses));
     }
     state = {
         data,
@@ -29,16 +31,17 @@ class CoursePage extends React.Component<ComponentProps,State> {
         inputEdit: {id:"",img: "", name: '', course: '', author: '', stars: '', price: ''}
     };
     onSubmitHandler = () => {
-       this.props.addCourse( {
-           id: Symbol('id'),
-           info: '',
-           img: this.state.inputValues.img,
-           name: this.state.inputValues.course,
-           course: this.state.inputValues.name,
-           author: this.state.inputValues.author,
-           stars: Number(`${this.state.inputValues.stars}`),
-           price: Number(`${this.state.inputValues.price}`),
-       })
+        const newCourse = {
+            id: Symbol('id'),
+            info: '',
+            img: this.state.inputValues.img,
+            name: this.state.inputValues.course,
+            course: this.state.inputValues.name,
+            author: this.state.inputValues.author,
+            stars: Number(`${this.state.inputValues.stars}`),
+            price: Number(`${this.state.inputValues.price}`),}
+       this.props.addCourse( newCourse)
+        localStorage.setItem("courses", JSON.stringify([...this.props.courses,newCourse]));
     }
     onSubmitEditHandler = () => {
         const newCourse = {
