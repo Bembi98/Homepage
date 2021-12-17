@@ -10,4 +10,5 @@ export type Course = {
 };
 export interface CoursesReducer {
     courses: Course[];
+    inputValue : string,
 }

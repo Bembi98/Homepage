@@ -1,9 +1,10 @@
 import { Action } from "../../utils/action";
-import { ADD_COURSE, DELETE_COURSE, SET_COURSES,EDIT_COURSE} from "./actions";
+import { ADD_COURSE, DELETE_COURSE, SET_COURSES,EDIT_COURSE,SEARCH_VALUE} from "./actions";
 import { CoursesReducer } from "./types";
 
 const initialState: CoursesReducer = {
-    courses: []
+    courses: [],
+    inputValue : ''
 };
 
 export const coursesReducer = (state = initialState, action: Action) => {
@@ -18,6 +19,10 @@ export const coursesReducer = (state = initialState, action: Action) => {
         case EDIT_COURSE:
             return {
                 ...state, courses: state.courses.map((course) => course.id === action.payload.id? action.payload.newCourse : course )}
+        case SEARCH_VALUE:
+            return{
+                ...state, inputValue : state.courses.filter((course)=>course.name === action.payload.name)
+            }
         default:
             return state;
     }
