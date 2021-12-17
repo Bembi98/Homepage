@@ -3,11 +3,11 @@ import Button from '@mui/material/Button';
 import {AppBar, Box, Container, IconButton, Toolbar, Typography, withStyles} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import {styles} from "./style"
-import Input from '@mui/material/Input';
+// import Input from '@mui/material/Input';
 // import {ComponentProps, DispatchProps,} from "./types";
-import {Dispatch} from "redux";
-import {findCourse} from "../../store/courses/actions";
-import {connect} from "react-redux";
+// import {Dispatch} from "redux";
+// import {findCourse} from "../../store/courses/actions";
+// import {connect} from "react-redux";
 import SearchBar from "material-ui-search-bar";
 import {Props,State} from "./types";
 
