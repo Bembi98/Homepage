@@ -22,7 +22,7 @@ class Header extends React.Component<Props,State> {
     render() {
         const {classes} = this.props
         return (
-            <AppBar position="fixed">
+            <AppBar position="fixed" className={classes.appBar}>
                 <Container fixed>
                     <Toolbar>
 
@@ -38,7 +38,7 @@ class Header extends React.Component<Props,State> {
                         <Box mr={3}>
                             <Button color ="inherit" variant="outlined">Log In</Button>
                         </Box>
-                        <Button color ="secondary" variant="contained">Sign Up</Button>
+                        <Button color ="inherit" variant="outlined" >Sign Up</Button>
                     </Toolbar>
                 </Container>
             </AppBar>
