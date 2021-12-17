@@ -24,8 +24,10 @@ export const styles = createStyles({
     fab: {
         position: 'absolute',
         top: '50%',
-        left: '50%',
+        left: '47%',
+        marginBottom: 40
     },
+
     inputAdd:{
         display:'flex',
        flexDirection:'column',
