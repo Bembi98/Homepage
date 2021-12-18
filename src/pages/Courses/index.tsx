@@ -1,8 +1,8 @@
 import React from "react";
 import CourseCard from "../../components/CourseCard/index";
-import {withStyles} from "@material-ui/core";
+import {Checkbox, FormControlLabel, FormGroup, TextField, withStyles} from "@material-ui/core";
 import {styles} from "./style";
-import {ComponentProps,State} from "./types";
+import {ComponentProps, State} from "./types";
 import {data} from '../../data'
 import {Course} from "./types"
 import Modal from "../../components/Modal";
@@ -10,42 +10,47 @@ import Typography from '@mui/material/Typography';
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import Button from '@mui/material/Button';
-import {deleteCourse,addCourse,setCourses,editCourse} from "../../store/courses/actions";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
-import  {DispatchProps,StateProps} from './types'
+import {deleteCourse, addCourse, setCourses, editCourse} from "../../store/courses/actions";
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
+import {DispatchProps, StateProps} from './types'
 import Paginatoins from "../../components/Paginatoin";
+import FilterCourse from "../../components/FilterCourse";
+import Box from "@mui/material/Box";
 
 
-
-class CoursePage extends React.Component<ComponentProps,State> {
+class CoursePage extends React.Component<ComponentProps, State> {
     componentDidMount() {
-        const courses = localStorage.getItem("courses") ;
-        if(!courses){
-            localStorage.setItem("courses",JSON.stringify(data))
+        const courses = localStorage.getItem("courses");
+        if (!courses) {
+            localStorage.setItem("courses", JSON.stringify(data))
         }
-        this.props.setCourses(courses ? JSON.parse(courses ) : data);
+        this.props.setCourses(courses ? JSON.parse(courses) : data);
     }
+
     state = {
         data,
         selectedCourse: null,
         open: false,
         inputValues: {img: '', name: '', course: '', author: '', stars: '', price: ''},
         selectedForEdit: null,
-        inputEdit: {id:"",img: "", name: '', course: '', author: '', stars: '', price: ''}
+        inputEdit: {id: "", img: "", name: '', course: '', author: '', stars: '', price: ''},
+
+
     };
     onSubmitHandler = () => {
         const newCourse = {
-            id: new Date().getTime().toString() + Math.floor(Math.random()*1000000),
+            id: new Date().getTime().toString() + Math.floor(Math.random() * 1000000),
             info: '',
             img: this.state.inputValues.img,
             name: this.state.inputValues.course,
             course: this.state.inputValues.name,
             author: this.state.inputValues.author,
             stars: Number(`${this.state.inputValues.stars}`),
-            price: Number(`${this.state.inputValues.price}`),}
-       this.props.addCourse( newCourse)
-        localStorage.setItem("courses", JSON.stringify([...this.props.courses,newCourse]));
+            price: Number(`${this.state.inputValues.price}`),
+        }
+        this.props.addCourse(newCourse)
+        localStorage.setItem("courses", JSON.stringify([...this.props.courses, newCourse]));
     }
     onSubmitEditHandler = () => {
         const newCourse = {
@@ -58,11 +63,11 @@ class CoursePage extends React.Component<ComponentProps,State> {
             stars: Number(`${this.state.inputEdit.stars}`),
             price: Number(`${this.state.inputEdit.price}`),
         }
-      this.props.editCourse(Number(this.state.inputEdit.id),newCourse)
-        localStorage.setItem("courses", JSON.stringify(this.props.courses.map((course) => course.id === newCourse.id? newCourse : course )))
+        this.props.editCourse(Number(this.state.inputEdit.id), newCourse)
+        localStorage.setItem("courses", JSON.stringify(this.props.courses.map((course) => course.id === newCourse.id ? newCourse : course)))
     }
     handleDelete = (id: number) => () => {
-       this.props.deleteCourse(id)
+        this.props.deleteCourse(id)
         localStorage.setItem("courses", JSON.stringify(this.props.courses.filter((course) => course.id !== id)));
     };
     handleSelectCourse = (course: Course) => () => {
@@ -81,7 +86,7 @@ class CoursePage extends React.Component<ComponentProps,State> {
         this.setState({selectedForEdit: course})
         this.setState({
             inputEdit: {
-                id:course.id,
+                id: course.id,
                 img: course.img,
                 name: course.course,
                 course: course.name,
@@ -94,21 +99,33 @@ class CoursePage extends React.Component<ComponentProps,State> {
     handleCloseEditModal = () => {
         this.setState({selectedForEdit: null})
     }
+
+
     render() {
         const {classes} = this.props;
-        const { selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
+        const {selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
         const course = selectedCourse as any
         return (
             <>
-                <div className={classes.courseGallery}>
-                    {this.props.courses.map((course) => (
-                        <CourseCard handleOpenEditModal={this.handleOpenEditModal(course)} course={course}
-                                    handleSelectCourse={this.handleSelectCourse(course)}
-                                    onDelete={this.handleDelete(course.id)}/>
-                    ))}
+                <div className={classes.cardsSection}>
+                    <div className={classes.filterCourses}>
+                        <FormGroup>
+                           <Typography variant="h5" >Faster Search</Typography>
+                            <br/>
+                            <FilterCourse/>
+
+                        </FormGroup>
+                    </div>
+                    <div className={classes.courseGallery}>
+                        {this.props.courses.map((course) => (
+                            <CourseCard handleOpenEditModal={this.handleOpenEditModal(course)} course={course}
+                                        handleSelectCourse={this.handleSelectCourse(course)}
+                                        onDelete={this.handleDelete(course.id)}/>
+                        ))}
+                    </div>
 
                 </div>
-                <Paginatoins />
+                <Paginatoins/>
                 <Fab className={classes.fab} color="primary" aria-label="add"
                      onClick={this.handleOpenModal}>
                     <AddIcon/>
@@ -179,13 +196,14 @@ class CoursePage extends React.Component<ComponentProps,State> {
                                onChange={(event) => this.setState(state => ({
                                    ...state, inputEdit: {...state.inputEdit, price: event.target.value}
                                }))}/>
-                        <Button variant="outlined" color="secondary" onClick={this.onSubmitEditHandler} >Save</Button>
+                        <Button variant="outlined" color="secondary" onClick={this.onSubmitEditHandler}>Save</Button>
                     </div>
                 </Modal>
             </>
         );
     }
 }
+
 const mapStateToProps = (state: any): StateProps => ({
     courses: state.courses.courses
 });
@@ -196,11 +214,11 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     addCourse: (course: Course) => {
         dispatch(addCourse(course));
     },
-    deleteCourse:(id:number)=>{
+    deleteCourse: (id: number) => {
         dispatch(deleteCourse(id))
     },
-    editCourse:(id:number,course:Course)=>{
-        dispatch(editCourse(id,course))
+    editCourse: (id: number, course: Course) => {
+        dispatch(editCourse(id, course))
     }
 });
-export default connect (mapStateToProps, mapDispatchToProps) (withStyles(styles)(CoursePage));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CoursePage));

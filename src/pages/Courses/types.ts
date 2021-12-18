@@ -1,5 +1,6 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
+import * as React from "react";
 
 export type Course = {
     id: any;
@@ -19,6 +20,8 @@ export interface State {
     inputValues:any
     selectedForEdit: Course | null
     inputEdit:any
+
+
 }
 export interface DispatchProps {
     setCourses: (course: Course[]) => void;

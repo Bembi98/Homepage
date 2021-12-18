@@ -35,4 +35,10 @@ export const styles = createStyles({
         top: '60%',
         left: '50%',
     },
+    cardsSection:{
+        display:'flex'
+    },
+    filterCourses:{
+marginTop:80
+    }
 });
