@@ -14,6 +14,8 @@ import {deleteCourse,addCourse,setCourses,editCourse} from "../../store/courses/
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import  {DispatchProps,StateProps} from './types'
+import Paginatoins from "../../components/Paginatoin";
+
 
 
 class CoursePage extends React.Component<ComponentProps,State> {
@@ -104,11 +106,14 @@ class CoursePage extends React.Component<ComponentProps,State> {
                                     handleSelectCourse={this.handleSelectCourse(course)}
                                     onDelete={this.handleDelete(course.id)}/>
                     ))}
+
                 </div>
+                <Paginatoins />
                 <Fab className={classes.fab} color="primary" aria-label="add"
                      onClick={this.handleOpenModal}>
                     <AddIcon/>
                 </Fab>
+
                 <Modal open={!!selectedCourse} onClose={this.handleCloseDetailsModal}>{!!selectedCourse && (
                     <div className={classes.courseInfo}>
                         <Typography variant="h6" component="h2">More Info about course</Typography>
