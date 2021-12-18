@@ -12,5 +12,8 @@ export const styles = createStyles({
     },
     searchbar:{
       marginRight:'10%'
+    },
+    appBar:{
+        backgroundColor:"#000000"
     }
 })

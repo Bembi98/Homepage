@@ -19,9 +19,9 @@ class CourseCard extends React.Component<Props, State> {
                     <Button className={classes.btnCourse} variant="outlined" onClick={handleSelectCourse}  >{course.course} </Button>
                 </CardMedia>
                 <Typography className={classes.nameCourse} variant="h5">{course.name}</Typography>
-                <Typography className={classes.author} paragraph>{course.author} </Typography>
+                <Typography className={classes.author} variant= 'overline' paragraph>{course.author} </Typography>
                 <Rating value={course.stars}/>
-                <Typography className={classes.price} paragraph>{course.price} $</Typography>
+                <Typography className={classes.price} variant= 'overline' paragraph>{course.price} $</Typography>
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon className={classes.like}/>
                 </IconButton>
