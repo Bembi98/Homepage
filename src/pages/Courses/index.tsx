@@ -1,6 +1,6 @@
 import React from "react";
 import CourseCard from "../../components/CourseCard/index";
-import {Checkbox, FormControlLabel, FormGroup, TextField, withStyles} from "@material-ui/core";
+import { FormGroup, withStyles} from "@material-ui/core";
 import {styles} from "./style";
 import {ComponentProps, State} from "./types";
 import {data} from '../../data'
@@ -16,7 +16,9 @@ import {connect} from "react-redux";
 import {DispatchProps, StateProps} from './types'
 import Paginatoins from "../../components/Paginatoin";
 import FilterCourse from "../../components/FilterCourse";
-import Box from "@mui/material/Box";
+
+
+
 
 
 class CoursePage extends React.Component<ComponentProps, State> {
@@ -35,7 +37,8 @@ class CoursePage extends React.Component<ComponentProps, State> {
         inputValues: {img: '', name: '', course: '', author: '', stars: '', price: ''},
         selectedForEdit: null,
         inputEdit: {id: "", img: "", name: '', course: '', author: '', stars: '', price: ''},
-
+        checkedDir: [false,false],
+        checkedComp: [false,false]
 
     };
     onSubmitHandler = () => {
@@ -105,6 +108,7 @@ class CoursePage extends React.Component<ComponentProps, State> {
         const {classes} = this.props;
         const {selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
         const course = selectedCourse as any
+
         return (
             <>
                 <div className={classes.cardsSection}>
@@ -112,10 +116,11 @@ class CoursePage extends React.Component<ComponentProps, State> {
                         <FormGroup>
                            <Typography variant="h5" >Faster Search</Typography>
                             <br/>
-                            <FilterCourse/>
+                            <FilterCourse checkedDir={this.state.checkedDir} checkedComp={this.state.checkedComp} />
 
                         </FormGroup>
                     </div>
+
                     <div className={classes.courseGallery}>
                         {this.props.courses.map((course) => (
                             <CourseCard handleOpenEditModal={this.handleOpenEditModal(course)} course={course}

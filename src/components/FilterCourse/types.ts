@@ -1,6 +1,6 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
-import React from "react";
+
 
 
 export interface State {
@@ -8,5 +8,6 @@ export interface State {
     checkedComp:boolean[]
 }
 export interface Props extends WithStyles <typeof styles> {
-    children: React.ReactNode
+    checkedDir: boolean[]
+    checkedComp: boolean[]
 }

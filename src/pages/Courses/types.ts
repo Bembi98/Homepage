@@ -20,9 +20,11 @@ export interface State {
     inputValues:any
     selectedForEdit: Course | null
     inputEdit:any
-
+    checkedDir: boolean [] ,
+    checkedComp:boolean []
 
 }
+
 export interface DispatchProps {
     setCourses: (course: Course[]) => void;
     addCourse: (course: Course) => void;
@@ -31,6 +33,7 @@ export interface DispatchProps {
 }
 export interface StateProps {
     courses: Course[];
+
 }
 export interface ComponentProps extends StateProps, DispatchProps,WithStyles <typeof styles>{
 
