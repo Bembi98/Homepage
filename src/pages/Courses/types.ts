@@ -1,5 +1,6 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
+import {findCourse} from "../../store/courses/actions";
 
 
 export type Course = {
@@ -30,10 +31,11 @@ export interface DispatchProps {
     addCourse: (course: Course) => void;
     deleteCourse: (id:number) => void;
     editCourse:(id:number,course:Course)=>void;
+    findCourse: (name:string)=>void
 }
 export interface StateProps {
     courses: Course[];
-
+    filtredCourses:any[]
 }
 export interface ComponentProps extends StateProps, DispatchProps,WithStyles <typeof styles>{
 

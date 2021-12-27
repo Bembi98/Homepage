@@ -21,11 +21,7 @@ class Header extends React.Component<Props, State> {
         login: '',
         inputValue: ''
     }
-    findCourse =  () => {
-        this.props.findCourse(this.state.inputValue)
 
-
-    };
     handleCloseModal = () => {
         this.setState({open: false})
     }
@@ -39,7 +35,7 @@ class Header extends React.Component<Props, State> {
 
 
     render() {
-        const {classes} = this.props
+        const {classes,findCourse} = this.props
         const {open} = this.state
         const isLogged = this.props.user
 
@@ -55,7 +51,7 @@ class Header extends React.Component<Props, State> {
                         <SearchBar className={classes.searchbar}
                                    value={this.state.inputValue}
                                    onChange={(newValue) => this.setState({inputValue: newValue})}
-                                   onRequestSearch={() => this.findCourse}
+                                   onRequestSearch={() => findCourse(this.state.inputValue)}
                         />
                         <Box mr={3}>
                             {isLogged ? <Button color="inherit" variant="outlined">Admin </Button> :
@@ -90,14 +86,12 @@ class Header extends React.Component<Props, State> {
 const mapStateToProps = (state: any): StateProps => ({
     user: state.account.user,
 
+
 });
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     setUser: (user: User) => {
         dispatch(setUser(user))
     },
-    findCourse: (inputValue: string) => {
-        dispatch(findCourse(inputValue))
 
-    }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header));

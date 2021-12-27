@@ -10,12 +10,11 @@ export interface State {
 }
 
 export interface Props extends StateProps, DispatchProps, WithStyles <typeof styles> {
-
+findCourse:(name:string)=>void
 }
 
 export interface DispatchProps {
     setUser: (user: User) => void
-    findCourse: (inputValue: string) => void;
 }
 
 export interface StateProps {

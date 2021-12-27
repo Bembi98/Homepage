@@ -10,12 +10,13 @@ import Typography from '@mui/material/Typography';
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import Button from '@mui/material/Button';
-import {deleteCourse, addCourse, setCourses, editCourse} from "../../store/courses/actions";
+import {deleteCourse, addCourse, setCourses, editCourse, findCourse} from "../../store/courses/actions";
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
 import {DispatchProps, StateProps} from './types'
 import Paginatoins from "../../components/Paginatoin";
 import FilterCourse from "../../components/FilterCourse";
+import Header from "../../components/Header";
 
 
 
@@ -122,14 +123,20 @@ class CoursePage extends React.Component<ComponentProps, State> {
     handleChangeComp3= (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ checkedComp: [ this.state.checkedComp[0], event.target.checked] })
     };
+    findCourse =  (name:string) => {
+        this.props.findCourse(name)
 
+
+    };
     render() {
         const {classes} = this.props;
         const {selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
         const course = selectedCourse as any
+        console.log(this.props.filtredCourses)
 
         return (
             <>
+                <Header findCourse={this.findCourse}/>
                 <div className={classes.cardsSection}>
                     <div className={classes.filterCourses}>
                         <FormGroup>
@@ -145,7 +152,7 @@ class CoursePage extends React.Component<ComponentProps, State> {
                     </div>
 
                     <div className={classes.courseGallery}>
-                        {this.props.courses.map((course) => (
+                        {(this.props.filtredCourses.length?this.props.filtredCourses:this.props.courses).map((course) => (
                             <CourseCard handleOpenEditModal={this.handleOpenEditModal(course)} course={course}
                                         handleSelectCourse={this.handleSelectCourse(course)}
                                         onDelete={this.handleDelete(course.id)}/>
@@ -233,7 +240,8 @@ class CoursePage extends React.Component<ComponentProps, State> {
 }
 
 const mapStateToProps = (state: any): StateProps => ({
-    courses: state.courses.courses
+    courses: state.courses.courses,
+    filtredCourses: state.courses.inputValue
 });
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     setCourses: (courses: Course[]) => {
@@ -247,6 +255,10 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     },
     editCourse: (id: number, course: Course) => {
         dispatch(editCourse(id, course))
+    },
+    findCourse: (name: string) => {
+        dispatch(findCourse(name))
+
     }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CoursePage));

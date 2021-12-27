@@ -20,8 +20,9 @@ export const coursesReducer = (state = initialState, action: Action) => {
             return {
                 ...state, courses: state.courses.map((course) => course.id === action.payload.id? action.payload.newCourse : course )}
         case SEARCH_VALUE:
+            console.log(action.payload)
             return{
-                ...state, inputValue : state.courses.filter((course)=>course.name === action.payload.name)
+                ...state, inputValue : state.courses.filter((course)=>course.name.includes(action.payload))
             }
         default:
             return state;
