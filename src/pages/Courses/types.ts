@@ -1,6 +1,6 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
-import * as React from "react";
+
 
 export type Course = {
     id: any;

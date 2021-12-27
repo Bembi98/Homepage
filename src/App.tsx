@@ -15,7 +15,6 @@ class App extends React.Component {
                 <Header/>
                 <MainInfo/>
         <CourseGallery  />
-
                 <Footer/>
             </Provider>
     )

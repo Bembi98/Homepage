@@ -102,7 +102,26 @@ class CoursePage extends React.Component<ComponentProps, State> {
     handleCloseEditModal = () => {
         this.setState({selectedForEdit: null})
     }
+    handleChangeDir = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({checkedDir:[event.target.checked,event.target.checked]});
+    };
+    handleChangeDir2= (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ checkedDir: [event.target.checked, this.state.checkedDir[1]] })
+    };
 
+    handleChangeDir3 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ checkedDir: [ this.state.checkedDir[0], event.target.checked] })
+    };
+    handleChangeComp = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({checkedDir:[event.target.checked,event.target.checked]});
+    };
+    handleChangeComp2= (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ checkedComp: [event.target.checked, this.state.checkedComp[1]] })
+    };
+
+    handleChangeComp3= (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ checkedComp: [ this.state.checkedComp[0], event.target.checked] })
+    };
 
     render() {
         const {classes} = this.props;
@@ -116,7 +135,11 @@ class CoursePage extends React.Component<ComponentProps, State> {
                         <FormGroup>
                            <Typography variant="h5" >Faster Search</Typography>
                             <br/>
-                            <FilterCourse checkedDir={this.state.checkedDir} checkedComp={this.state.checkedComp} />
+                            <FilterCourse checkedDir={this.state.checkedDir} checkedComp={this.state.checkedComp}
+                                          handleChangeDir={this.handleChangeDir} handleChangeDir2={this.handleChangeDir2}
+                                          handleChangeDir3={this.handleChangeDir3} handleChangeComp={this.handleChangeComp}
+                                          handleChangeComp2={this.handleChangeComp2} handleChangeComp3={this.handleChangeComp3}
+                             />
 
                         </FormGroup>
                     </div>
