@@ -22,7 +22,7 @@ export const coursesReducer = (state = initialState, action: Action) => {
         case SEARCH_VALUE:
             console.log(action.payload)
             return{
-                ...state, inputValue : state.courses.filter((course)=>course.name.includes(action.payload))
+                ...state, inputValue : state.courses.filter((course)=>course.course.toLowerCase().trim().includes(action.payload.toLowerCase().trim()))
             }
         default:
             return state;
