@@ -3,20 +3,22 @@ import {styles} from "./style";
 import {User} from '../../store/account/types'
 
 
-
 export interface State {
-   value:string
-   open: boolean
-    login:string
+    inputValue: string
+    open: boolean
+    login: string
 }
-export interface Props extends StateProps,DispatchProps,WithStyles <typeof styles> {
+
+export interface Props extends StateProps, DispatchProps, WithStyles <typeof styles> {
 
 }
+
 export interface DispatchProps {
- setUser:(user:User)=>void
-    findCourse: (name:string) => void;
+    setUser: (user: User) => void
+    findCourse: (inputValue: string) => void;
 }
+
 export interface StateProps {
-    user: null|User;
+    user: null | User;
 
 }

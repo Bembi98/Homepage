@@ -17,12 +17,14 @@ import {StateProps} from "./types";
 
 class Header extends React.Component<Props, State> {
     state = {
-        value: '',
         open: false,
-        login: ''
+        login: '',
+        inputValue: ''
     }
-    findCourse = (name: string) => () => {
-        this.props.findCourse(name)
+    findCourse =  () => {
+        this.props.findCourse(this.state.inputValue)
+
+
     };
     handleCloseModal = () => {
         this.setState({open: false})
@@ -51,12 +53,12 @@ class Header extends React.Component<Props, State> {
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>Best development courses</Typography>
                         <SearchBar className={classes.searchbar}
-                                   value={this.state.value}
-                                   onChange={(newValue) => this.setState({value: newValue})}
+                                   value={this.state.inputValue}
+                                   onChange={(newValue) => this.setState({inputValue: newValue})}
                                    onRequestSearch={() => this.findCourse}
                         />
                         <Box mr={3}>
-                            {isLogged ? <Button color="inherit" variant="outlined" >Admin </Button> :
+                            {isLogged ? <Button color="inherit" variant="outlined">Admin </Button> :
                                 <Button color="inherit" variant="outlined" onClick={this.handleOpenModal}>Log
                                     In</Button>}
                         </Box>
@@ -73,7 +75,8 @@ class Header extends React.Component<Props, State> {
                                     onClick={this.handleLogin}>Confirm</Button>
                         </Modal>
                         <div>
-                            {isLogged ? <Button color="inherit" variant="outlined">Log Out</Button> : <Button color="inherit" variant="outlined">Sign Up</Button>}
+                            {isLogged ? <Button color="inherit" variant="outlined">Log Out</Button> :
+                                <Button color="inherit" variant="outlined">Sign Up</Button>}
                         </div>
                     </Toolbar>
                 </Container>
@@ -85,14 +88,15 @@ class Header extends React.Component<Props, State> {
 
 
 const mapStateToProps = (state: any): StateProps => ({
-    user: state.account.user
+    user: state.account.user,
+
 });
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
     setUser: (user: User) => {
         dispatch(setUser(user))
     },
-    findCourse: (name: string) => {
-        dispatch(findCourse(name))
+    findCourse: (inputValue: string) => {
+        dispatch(findCourse(inputValue))
 
     }
 });

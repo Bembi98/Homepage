@@ -4,7 +4,7 @@ import { CoursesReducer } from "./types";
 
 const initialState: CoursesReducer = {
     courses: [],
-    inputValue : ''
+    inputValue : []
 };
 
 export const coursesReducer = (state = initialState, action: Action) => {
