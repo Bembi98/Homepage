@@ -23,7 +23,7 @@ export interface State {
     inputEdit:any
     checkedDir:boolean []
     checkedComp:boolean []
-    selectedTypes: string[],
+    selectedTypes: any [],
 
 }
 
@@ -33,6 +33,7 @@ export interface DispatchProps {
     deleteCourse: (id:number) => void;
     editCourse:(id:number,course:Course)=>void;
     findCourse: (name:string)=>void
+    filterCourses:(filters:string[])=>void
 }
 export interface StateProps {
     courses: Course[];
