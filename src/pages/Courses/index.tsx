@@ -39,9 +39,11 @@ class CoursePage extends React.Component<ComponentProps, State> {
         selectedForEdit: null,
         inputEdit: {id: "", img: "", name: '', course: '', author: '', stars: '', price: ''},
         checkedDir: [false,false],
-        checkedComp: [false,false]
+        checkedComp: [false,false],
+        selectedTypes:[],
 
     };
+
     onSubmitHandler = () => {
         const newCourse = {
             id: new Date().getTime().toString() + Math.floor(Math.random() * 1000000),
@@ -108,6 +110,8 @@ class CoursePage extends React.Component<ComponentProps, State> {
     };
     handleChangeDir2= (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ checkedDir: [event.target.checked, this.state.checkedDir[1]] })
+        this.setState({selectedTypes:['web']})
+
     };
 
     handleChangeDir3 = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,6 +126,7 @@ class CoursePage extends React.Component<ComponentProps, State> {
 
     handleChangeComp3= (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ checkedComp: [ this.state.checkedComp[0], event.target.checked] })
+
     };
     findCourse =  (name:string) => {
         this.props.findCourse(name)
@@ -132,7 +137,7 @@ class CoursePage extends React.Component<ComponentProps, State> {
         const {classes} = this.props;
         const {selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
         const course = selectedCourse as any
-        console.log(this.props.filtredCourses)
+        console.log(this.state.selectedTypes)
 
         return (
             <>

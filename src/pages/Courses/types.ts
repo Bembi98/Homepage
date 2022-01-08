@@ -1,6 +1,6 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
-import {findCourse} from "../../store/courses/actions";
+
 
 
 export type Course = {
@@ -21,8 +21,9 @@ export interface State {
     inputValues:any
     selectedForEdit: Course | null
     inputEdit:any
-    checkedDir: boolean [] ,
+    checkedDir:boolean []
     checkedComp:boolean []
+    selectedTypes: string[],
 
 }
 
