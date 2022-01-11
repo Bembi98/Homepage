@@ -36,7 +36,7 @@ export const styles = createStyles({
         left: '50%',
     },
     cardsSection:{
-        display:'flex'
+        display:'flex',
     },
     filterCourses:{
 marginTop:80

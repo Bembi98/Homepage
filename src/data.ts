@@ -16,7 +16,7 @@ export const data: Course[] = [
         course: "Web Developer",
         name: "How to become an Expert Web Developer",
         img: "./image/sova.PNG",
-        author: "Ilusha Company",
+        author: "Menkes Company",
         stars: 2,
         price: 360,
         info: "Some text  about Web Developer "
@@ -35,7 +35,7 @@ export const data: Course[] = [
         course: '3D Design',
         name: 'Creating 3D Modelling in \n' + 'Blender ',
         img: "./image/olen.PNG",
-        author: 'Ilusha Company',
+        author: 'Menkes Company',
         stars: 4,
         price: 370,
         info: 'Some text  about 3D Design '
@@ -56,7 +56,7 @@ export const data: Course[] = [
         course: 'Public Speaking',
         name: 'Interpersonal skills - work better with others!',
         img: "./image/svinya.PNG",
-        author: 'Ilusha Company',
+        author: 'Menkes Company',
         stars: 2,
         price: 380,
         info: 'Some text  about Public Speaking '
@@ -78,7 +78,7 @@ export const data: Course[] = [
         course: 'UI/UX Design',
         name: 'Interpersonal skills - work better with others!',
         img: "./image/pin.PNG",
-        author: 'Ilusha Company',
+        author: 'Menkes Company',
         stars: 3,
         price: 390,
         info: 'Some text  about UI/UX Design '

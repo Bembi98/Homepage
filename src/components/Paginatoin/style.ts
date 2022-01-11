@@ -5,6 +5,7 @@ export const styles = createStyles({
         position: 'relative',
         top: '30%',
         left: '43%',
-        marginBottom: 40
+        marginBottom: 40,
+        maxWidth:'12%'
     },
 })
