@@ -1,25 +1,28 @@
 import {WithStyles} from "@material-ui/core";
 import {styles} from "./style";
 
-export type Course = {
+export type Persons ={
     id: number;
-    course: string;
+    info: string;
     name: string;
     img: string;
-    author: string;
-    stars: number;
-    price: number;
-    info: string;
-};
+    direction: string;
+    age: number;
+    type: string;
+    location: string;
+    birthday : string;
+    gender : string;
+    national : string;
 
+}
 export interface Props extends WithStyles <typeof styles> {
-    course: Course;
+    student: Persons;
     onDelete:()=>void;
     handleSelectCourse: () => void
     handleOpenEditModal:()=>void
 }
 export interface State  {
-   data:Course;
+    dataStudent:Persons;
 }
 interface DispatchProps {
     deleteCourse: (id: number) => void;

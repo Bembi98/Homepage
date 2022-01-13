@@ -10,7 +10,7 @@ export interface State {
 }
 
 export interface Props extends StateProps, DispatchProps, WithStyles <typeof styles> {
-findCourse:(name:string)=>void
+findCourse?:(name:string)=>void
 }
 
 export interface DispatchProps {

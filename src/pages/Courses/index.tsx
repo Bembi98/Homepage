@@ -178,7 +178,6 @@ class CoursePage extends React.Component<ComponentProps, State> {
         const {classes} = this.props;
         const {selectedCourse, open, inputValues, selectedForEdit, inputEdit} = this.state;
         const course = selectedCourse as any
-        console.log(this.state.selectedTypes)
 
         return (
             <>

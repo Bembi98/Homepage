@@ -5,6 +5,7 @@ import { createStore } from "redux";
 import { rootReducer } from "./store";
 import Footer from "./components/Footer";
 import MainInfo from "./pages/InfoPage";
+import AdminPage from "./pages/AdminPage";
 const store = createStore(rootReducer);
 
 class App extends React.Component {
@@ -12,9 +13,7 @@ class App extends React.Component {
         return(
             <Provider store={store}>
 
-                <MainInfo/>
-        <CourseGallery  />
-                <Footer/>
+       <AdminPage/>
             </Provider>
     )
     }

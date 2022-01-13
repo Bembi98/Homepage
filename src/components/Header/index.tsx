@@ -51,7 +51,7 @@ class Header extends React.Component<Props, State> {
                         <SearchBar className={classes.searchbar}
                                    value={this.state.inputValue}
                                    onChange={(newValue) => this.setState({inputValue: newValue})}
-                                   onRequestSearch={() => findCourse(this.state.inputValue)}
+                                   onRequestSearch={() => findCourse?findCourse(this.state.inputValue):null}
                         />
                         <Box mr={3}>
                             {isLogged ? <Button color="inherit" variant="outlined">Admin </Button> :
