@@ -16,14 +16,14 @@ export type Persons ={
 
 }
 export interface Props extends WithStyles <typeof styles> {
-    student: Persons;
+    coach: Persons;
     onDelete:()=>void;
-    handleSelectCourse: () => void
+    handleSelectPerson: () => void
     handleOpenEditModal:()=>void
 }
 export interface State  {
-    dataStudent:Persons;
+    dataCoach:Persons;
 }
 interface DispatchProps {
-    deleteCourse: (id: number) => void;
+    deleteCoach: (id: number) => void;
 }
